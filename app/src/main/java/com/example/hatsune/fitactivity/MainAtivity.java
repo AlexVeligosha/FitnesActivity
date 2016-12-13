@@ -1,17 +1,36 @@
 package com.example.hatsune.fitactivity;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
-/**
- * Created by hatsune on 13.12.16.
- */
 
-public class MainAtivity extends Activity {
+public class MainAtivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        intitToolbar();
+    }
+
+    private void intitToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(R.string.app_name);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                return false;
+            }
+        });
+
+        toolbar.inflateMenu(R.menu.menu);
     }
 }
+
